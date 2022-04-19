@@ -3,13 +3,15 @@ const Mock = require("mockjs");
 var Random = Mock.Random;
 
 const data = Mock.mock({
-  "items|30": [
+  "items|5": [
     {
       id: "@id",
-      name: "@FIRST @Last",
-      "payment|1": ["Visa", "MasterCard", "JCB"],
-      nickname: "@FIRST",
+      name: /^(2)[a-z](2)[A-Z](8)[0-9]/,
+      company_name: function () {
+        return Random.first() + " Ltd.";
+      },
       email: "@email",
+      api_url: "@url",
       "fromNowOn|+1": 1,
       "now|+1": '@now("yyyy-MM-dd")',
       "register_time|-1": function () {
@@ -29,7 +31,7 @@ const data = Mock.mock({
 
 module.exports = [
   {
-    url: "/vue-admin-template/table/list",
+    url: "/vue-admin-template/satellite/list",
     type: "get",
     response: (config) => {
       const items = data.items;

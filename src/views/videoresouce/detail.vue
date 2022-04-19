@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <el-card class="box-card">
-      Dashboard
+      Video Resource ListPage
       <div class="box-card-text">Current name: {{ name }}</div>
     </el-card>
   </div>

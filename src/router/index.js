@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 
-Vue.use(Router)
+Vue.use(Router);
 
 /* Layout */
-import Layout from '@/layout'
+import Layout from "@/layout";
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -32,150 +32,227 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
+    path: "/login",
+    component: () => import("@/views/login/index"),
+    hidden: true,
   },
 
   {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
+    path: "/404",
+    component: () => import("@/views/404"),
+    hidden: true,
   },
 
   {
-    path: '/',
+    path: "/",
     component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
-  },
-
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: "/dashboard",
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: "dashboard",
+        name: "Dashboard",
+        component: () => import("@/views/dashboard/index"),
+        meta: { title: "Dashboard", icon: "dashboard" },
+      },
+    ],
+  },
+
+  {
+    path: "/example",
+    component: Layout,
+    redirect: "/example/table",
+    name: "Example",
+    meta: { title: "Account", icon: "el-icon-user" },
+    children: [
+      {
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/table/index"),
+        meta: { title: "List", icon: "table" },
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
+        path: "tree",
+        name: "Add Account",
+        component: () => import("@/views/form/index"),
+        meta: { title: "Add Account", icon: "form" },
+      },
+    ],
   },
 
   {
-    path: '/form',
+    path: "/satellite",
     component: Layout,
+    redirect: "/satellite/list",
+    name: "Satellite",
+    meta: { title: "Satellite", icon: "el-icon-s-help" },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/satellite/index"),
+        meta: { title: "List", icon: "table" },
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
+        path: "tree",
+        name: "Add Satellite",
+        component: () => import("@/views/satellite/form"),
+        meta: { title: "Add Satellite", icon: "form" },
+      },
+    ],
   },
 
   {
-    path: 'external-link',
+    path: "/videoresouce",
     component: Layout,
+    redirect: "/videoresouce/list",
+    name: "Video Resource",
+    meta: { title: "Video Resource", icon: "el-icon-video-camera-solid" },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/videoresouce/index"),
+        meta: { title: "List", icon: "table" },
+      },
+      {
+        path: "tree",
+        name: "Add Video",
+        component: () => import("@/views/videoresouce/detail"),
+        meta: { title: "Add Resource", icon: "form" },
+      },
+    ],
   },
+
+  {
+    path: "/videodata",
+    component: Layout,
+    redirect: "/videodata/list",
+    name: "Video Data",
+    meta: { title: "Video Data", icon: "el-icon-video-camera" },
+    children: [
+      {
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/videodata/index"),
+        meta: { title: "List", icon: "table" },
+      },
+      {
+        path: "tree",
+        name: "Add Video",
+        component: () => import("@/views/videodata/detail"),
+        meta: { title: "Add Video Data", icon: "form" },
+      },
+      {
+        path: "edit",
+        name: "Edit Video",
+        component: () => import("@/views/videodata/edit"),
+        meta: { title: "Edit Video Data", icon: "form" },
+      },
+    ],
+  },
+
+  // {
+  //   path: "/form",
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: "index",
+  //       name: "Add Account",
+  //       component: () => import("@/views/form/index"),
+  //       meta: { title: "Add Account", icon: "form" },
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   path: "/nested",
+  //   component: Layout,
+  //   redirect: "/nested/menu1",
+  //   name: "Nested",
+  //   meta: {
+  //     title: "Nested",
+  //     icon: "nested",
+  //   },
+  //   children: [
+  //     {
+  //       path: "menu1",
+  //       component: () => import("@/views/nested/menu1/index"), // Parent router-view
+  //       name: "Menu1",
+  //       meta: { title: "Menu1" },
+  //       children: [
+  //         {
+  //           path: "menu1-1",
+  //           component: () => import("@/views/nested/menu1/menu1-1"),
+  //           name: "Menu1-1",
+  //           meta: { title: "Menu1-1" },
+  //         },
+  //         {
+  //           path: "menu1-2",
+  //           component: () => import("@/views/nested/menu1/menu1-2"),
+  //           name: "Menu1-2",
+  //           meta: { title: "Menu1-2" },
+  //           children: [
+  //             {
+  //               path: "menu1-2-1",
+  //               component: () =>
+  //                 import("@/views/nested/menu1/menu1-2/menu1-2-1"),
+  //               name: "Menu1-2-1",
+  //               meta: { title: "Menu1-2-1" },
+  //             },
+  //             {
+  //               path: "menu1-2-2",
+  //               component: () =>
+  //                 import("@/views/nested/menu1/menu1-2/menu1-2-2"),
+  //               name: "Menu1-2-2",
+  //               meta: { title: "Menu1-2-2" },
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           path: "menu1-3",
+  //           component: () => import("@/views/nested/menu1/menu1-3"),
+  //           name: "Menu1-3",
+  //           meta: { title: "Menu1-3" },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "menu2",
+  //       component: () => import("@/views/nested/menu2/index"),
+  //       name: "Menu2",
+  //       meta: { title: "menu2" },
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   path: "external-link",
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: "https://panjiachen.github.io/vue-element-admin-site/#/",
+  //       meta: { title: "External Link", icon: "link" },
+  //     },
+  //   ],
+  // },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
-]
+  { path: "*", redirect: "/404", hidden: true },
+];
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes,
+  });
 
-const router = createRouter()
+const router = createRouter();
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher; // reset router
 }
 
-export default router
+export default router;

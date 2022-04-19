@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-card class="box-card"> Account List </el-card>
+    <el-card class="box-card">Satellite List </el-card>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -19,9 +19,9 @@
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column label="Nickname" align="center">
+      <el-table-column label="Company" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.nickname }}</span>
+          <span>{{ scope.row.company_name }}</span>
         </template>
       </el-table-column>
       <el-table-column label="Email" align="center">
@@ -29,36 +29,23 @@
           {{ scope.row.email }}
         </template>
       </el-table-column>
-      <el-table-column
-        class-name="status-col"
-        label="Payment"
-        width="110"
-        align="center"
-      >
+      <el-table-column label="API URL" align="center">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.payment | statusFilter">{{
-            scope.row.payment
-          }}</el-tag>
+          {{ scope.row.api_url }}
         </template>
       </el-table-column>
-      <el-table-column
-        align="center"
-        prop="created_at"
-        label="Register"
-        width="200"
-      >
+      <el-table-column align="center" prop="created_at" label="Register">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.register_time }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Action" width="300" align="center">
+      <el-table-column label="Action" fixed="right" width="180" align="center">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" size="mini" type="info"
             >Detail</el-button
           >
           <el-button size="mini" type="danger">Delete</el-button>
-          <el-button size="mini" type="warning">Reset Password</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -66,7 +53,7 @@
 </template>
 
 <script>
-import { getList } from "@/api/table";
+import { getList } from "@/api/satellite";
 
 export default {
   filters: {
