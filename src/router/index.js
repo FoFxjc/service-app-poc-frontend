@@ -116,9 +116,15 @@ export const constantRoutes = [
       },
       {
         path: "tree",
+        name: "Video Detail",
+        component: () => import("@/views/videoresouce/detail"),
+        meta: { title: "Video Detail", icon: "form" },
+      },
+      {
+        path: "edit",
         name: "Add Video",
         component: () => import("@/views/videoresouce/detail"),
-        meta: { title: "Add Resource", icon: "form" },
+        meta: { title: "Edit Resource", icon: "form" },
       },
     ],
   },
@@ -138,9 +144,9 @@ export const constantRoutes = [
       },
       {
         path: "tree",
-        name: "Add Video",
+        name: "Video Detail",
         component: () => import("@/views/videodata/detail"),
-        meta: { title: "Add Video Data", icon: "form" },
+        meta: { title: "Video Detail", icon: "form" },
       },
       {
         path: "edit",
