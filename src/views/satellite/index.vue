@@ -28,12 +28,12 @@
             <el-row>
               <el-col :span="8">
                 <font-awesome-icon
-                  v-if="item.status == 'Offline'"
+                  v-if="item.status == 'Online'"
                   icon="fa-solid fa-satellite-dish"
                   style="color: #409eff; width: 100px; height: 100px"
                 />
                 <font-awesome-icon
-                  v-if="item.status == 'Online'"
+                  v-if="item.status == 'Offline'"
                   icon="fa-solid fa-satellite-dish"
                   style="color: #909399; width: 100px; height: 100px"
                 />
