@@ -1,26 +1,19 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" label-width="180px">
-      <el-form-item label="Satellite name" style="width: 50%">
+    <el-form ref="form" :model="form" label-width="120px">
+      <el-form-item label="User name" style="width: 50%">
         <el-input v-model="form.name" />
       </el-form-item>
-      <el-form-item label="Satellite company" style="width: 50%">
-        <el-select
-          value="SC Ltd."
-          placeholder="Type"
-          clearable
-          class="filter-item"
-          style="width: 130px"
-        >
-          <el-option value="SC Ltd.">SC Ltd.</el-option>
-          <el-option value="DC Ltd.">DC Ltd.</el-option>
-          <el-option value="Awesome Ltd.">Awesome Ltd.</el-option>
+      <el-form-item label="Gender">
+        <el-select v-model="form.region">
+          <el-option label="Zone one" value="Male" />
+          <el-option label="Zone two" value="Female" />
         </el-select>
       </el-form-item>
-      <el-form-item label="Satellite API" style="width: 50%">
+      <el-form-item label="Nick name" style="width: 50%">
         <el-input v-model="form.name" />
       </el-form-item>
-      <el-form-item label="Satellite API Token" style="width: 50%">
+      <el-form-item label="Email" style="width: 50%">
         <el-input v-model="form.name" />
       </el-form-item>
       <el-form-item>

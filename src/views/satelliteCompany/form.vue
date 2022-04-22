@@ -5,17 +5,10 @@
         <el-input v-model="form.name" />
       </el-form-item>
       <el-form-item label="Satellite company" style="width: 50%">
-        <el-select
-          value="SC Ltd."
-          placeholder="Type"
-          clearable
-          class="filter-item"
-          style="width: 130px"
-        >
-          <el-option value="SC Ltd.">SC Ltd.</el-option>
-          <el-option value="DC Ltd.">DC Ltd.</el-option>
-          <el-option value="Awesome Ltd.">Awesome Ltd.</el-option>
-        </el-select>
+        <el-input v-model="form.name" />
+      </el-form-item>
+      <el-form-item label="Satellite company email" style="width: 50%">
+        <el-input v-model="form.name" />
       </el-form-item>
       <el-form-item label="Satellite API" style="width: 50%">
         <el-input v-model="form.name" />

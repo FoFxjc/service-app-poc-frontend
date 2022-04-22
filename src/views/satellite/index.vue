@@ -1,54 +1,72 @@
 <template>
   <div class="app-container">
     <el-card class="box-card">Satellite List </el-card>
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Name" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.name }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Company" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.company_name }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Email" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.email }}
-        </template>
-      </el-table-column>
-      <el-table-column label="API URL" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.api_url }}
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Register">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.register_time }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Action" fixed="right" width="180" align="center">
-        <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" size="mini" type="info"
-            >Detail</el-button
-          >
-          <el-button size="mini" type="danger">Delete</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+
+    <el-row :gutter="20">
+      <el-col :span="6" v-for="item in list" :key="item.id">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span style="font-weight: normal">{{ item.name }}</span>
+            <el-popover placement="top-start" trigger="hover">
+              <el-button type="primary" icon="el-icon-edit" circle></el-button>
+              <el-button type="info" icon="el-icon-message" circle></el-button>
+              <el-button
+                type="warning"
+                icon="el-icon-star-off"
+                circle
+              ></el-button>
+              <el-button type="danger" icon="el-icon-delete" circle></el-button>
+              <el-button
+                style="float: right; padding: 3px 0"
+                type="text"
+                slot="reference"
+                >Action</el-button
+              >
+            </el-popover>
+          </div>
+          <div>
+            <el-row>
+              <el-col :span="8">
+                <font-awesome-icon
+                  v-if="item.status == 'Offline'"
+                  icon="fa-solid fa-satellite-dish"
+                  style="color: #409eff; width: 100px; height: 100px"
+                />
+                <font-awesome-icon
+                  v-if="item.status == 'Online'"
+                  icon="fa-solid fa-satellite-dish"
+                  style="color: #909399; width: 100px; height: 100px"
+                />
+              </el-col>
+              <el-col :offset="1" :span="11">
+                <div
+                  style="
+                    font-size: 14px;
+                    font-weight: normal;
+                    margin-top: -20px;
+                  "
+                >
+                  <p>
+                    <span style="font-weight: bold">API: </span>
+                    <br />
+                    <el-button type="text">{{ item.api_url }}</el-button>
+                  </p>
+                  <p>
+                    <span style="font-weight: bold"> Status: </span>
+                    <el-tag v-if="item.status == 'Online'">
+                      {{ item.status }}
+                    </el-tag>
+                    <el-tag v-if="item.status == 'Offline'" type="info">
+                      {{ item.status }}
+                    </el-tag>
+                  </p>
+                </div>
+              </el-col>
+            </el-row>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 

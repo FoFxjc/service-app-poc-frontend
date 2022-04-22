@@ -58,6 +58,20 @@ export const constantRoutes = [
   },
 
   {
+    path: "/statusdashboard",
+    component: Layout,
+    redirect: "/statusdashboard",
+    children: [
+      {
+        path: "statusdashboard",
+        name: "Status Dashboard",
+        component: () => import("@/views/notification/index"),
+        meta: { title: "Status Dashboard", icon: "el-icon-s-management" },
+      },
+    ],
+  },
+
+  {
     path: "/example",
     component: Layout,
     redirect: "/example/table",
@@ -80,11 +94,58 @@ export const constantRoutes = [
   },
 
   {
+    path: "/adminuser",
+    component: Layout,
+    redirect: "/adminuser/table",
+    name: "AdminUser",
+    meta: { title: "Admin Users", icon: "el-icon-s-custom" },
+    children: [
+      {
+        path: "table",
+        name: "List",
+        component: () => import("@/views/adminuser/list"),
+        meta: { title: "List", icon: "table" },
+      },
+      {
+        path: "tree",
+        name: "Add Admin",
+        component: () => import("@/views/adminuser/form"),
+        meta: { title: "Add Admin User", icon: "form" },
+      },
+    ],
+  },
+
+  {
+    path: "/satellitecompany",
+    component: Layout,
+    redirect: "/satellitecompany/list",
+    name: "Satellite Company",
+    meta: {
+      title: "Satellite Company",
+      icon: "fa-briefcase",
+    },
+    children: [
+      {
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/satelliteCompany/index"),
+        meta: { title: "List", icon: "table" },
+      },
+      {
+        path: "tree",
+        name: "Add Company",
+        component: () => import("@/views/satelliteCompany/form"),
+        meta: { title: "Add Company", icon: "form" },
+      },
+    ],
+  },
+
+  {
     path: "/satellite",
     component: Layout,
     redirect: "/satellite/list",
     name: "Satellite",
-    meta: { title: "Satellite", icon: "el-icon-s-help" },
+    meta: { title: "Satellite", icon: "fa-satellite" },
     children: [
       {
         path: "table",
@@ -119,12 +180,6 @@ export const constantRoutes = [
         name: "Video Detail",
         component: () => import("@/views/videoresouce/detail"),
         meta: { title: "Video Detail", icon: "form" },
-      },
-      {
-        path: "edit",
-        name: "Add Video",
-        component: () => import("@/views/videoresouce/detail"),
-        meta: { title: "Edit Resource", icon: "form" },
       },
     ],
   },

@@ -3,16 +3,15 @@ const Mock = require("mockjs");
 var Random = Mock.Random;
 
 const data = Mock.mock({
-  "items|10": [
+  "items|30": [
     {
       id: "@id",
-      name: /^(2)[a-z](2)[A-Z](8)[0-9]/,
-      company_name: function () {
-        return Random.first() + " Ltd.";
-      },
+      name: "@FIRST @Last",
+      "payment|1": ["Visa", "MasterCard", "JCB"],
+      nickname: "@FIRST",
       email: "@email",
-      api_url: "@url",
       "fromNowOn|+1": 1,
+      "role|1": ["Admin"],
       "now|+1": '@now("yyyy-MM-dd")',
       "register_time|-1": function () {
         let now = new Date(this.now);
@@ -25,15 +24,13 @@ const data = Mock.mock({
         var day = sub.getDate() < 10 ? "0" + sub.getDate() : sub.getDate();
         return year + "-" + month + "-" + day;
       },
-      ping: "@integer(10, 110)",
-      "status|1": ["Online", "Offline"],
     },
   ],
 });
 
 module.exports = [
   {
-    url: "/vue-admin-template/satellite/list",
+    url: "/vue-admin-template/adminuser/list",
     type: "get",
     response: (config) => {
       const items = data.items;

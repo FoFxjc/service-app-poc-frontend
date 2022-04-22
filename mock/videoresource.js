@@ -18,7 +18,7 @@ for (let i = 0; i < count; i++) {
       id: "@increment",
       "fromNowOn|+1": 1,
       "now|+1": '@now("yyyy-MM-dd")',
-      "date_time|-1": function () {
+      "date_time|+1": function () {
         let now = new Date(this.now);
         now.setTime(now.getTime() - this.fromNowOn * 24 * 60 * 60 * 1000);
         let sub = now;
@@ -53,6 +53,14 @@ for (let i = 0; i < count; i++) {
       image_uri,
       video_url,
       platforms: ["a-platform"],
+      "scope|1": [
+        "Public",
+        "Private",
+        "Public",
+        "Private",
+        "Public",
+        "Private",
+      ],
     })
   );
 }

@@ -6,8 +6,16 @@ const table = require("./table");
 const satellite = require("./staelllite");
 const article = require("./article");
 const videoresource = require("./videoresource");
+const adminuser = require("./adminuser");
 
-const mocks = [...user, ...table, ...satellite, ...article, ...videoresource];
+const mocks = [
+  ...user,
+  ...table,
+  ...satellite,
+  ...article,
+  ...videoresource,
+  ...adminuser,
+];
 
 // for front mock
 // please use it cautiously, it will redefine XMLHttpRequest,

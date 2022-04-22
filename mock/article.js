@@ -15,6 +15,7 @@ for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: "@increment",
+      "uid|+1": 1,
       "fromNowOn|+1": 1,
       "now|+1": '@now("yyyy-MM-dd")',
       "date_time|-1": function () {
@@ -47,6 +48,7 @@ for (let i = 0; i < count; i++) {
       image_uri,
       video_url,
       platforms: ["a-platform"],
+      "isDownload|1": [true, false],
     })
   );
 }
