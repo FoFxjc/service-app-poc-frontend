@@ -270,7 +270,7 @@
               </template>
             </el-table-column>
 
-            <el-table-column label="Visibility">
+            <el-table-column label="Visibility" width="100">
               <template slot-scope="{ row }">
                 <i v-if="row.status == 'Private'" class="el-icon-view"></i>
                 <i
